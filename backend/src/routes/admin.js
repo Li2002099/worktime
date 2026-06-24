@@ -28,7 +28,16 @@ router.get('/summary', async (req, res) => {
       [`${month}%`]
     );
 
-    res.json({ month, users: rows });
+    res.json({
+      month,
+      users: rows.map((u) => ({
+        ...u,
+        total_work_hours:     parseInt(u.total_work_hours),
+        total_overtime_hours: parseInt(u.total_overtime_hours),
+        days_checked_in:      parseInt(u.days_checked_in),
+        incomplete_days:      parseInt(u.incomplete_days),
+      })),
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: '伺服器錯誤' });
