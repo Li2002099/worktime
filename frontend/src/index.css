@@ -33,14 +33,15 @@ body {
   letter-spacing: 1px;
 }
 
-.navbar-nav {
+/* 桌面版導航（navbar 中央） */
+.navbar-nav-desktop {
   display: flex;
   gap: 4px;
   align-items: center;
   list-style: none;
 }
 
-.navbar-nav a {
+.navbar-nav-desktop a {
   color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   padding: 6px 14px;
@@ -49,11 +50,20 @@ body {
   transition: background 0.2s;
 }
 
-.navbar-nav a:hover,
-.navbar-nav a.active {
+.navbar-nav-desktop a:hover,
+.navbar-nav-desktop a.active {
   background: rgba(255, 255, 255, 0.2);
   color: white;
 }
+
+/* 手機版底部導航 */
+.navbar-nav {
+  display: none;
+  list-style: none;
+}
+
+.nav-icon { display: none; }
+.nav-label { font-size: 14px; }
 
 .navbar-right {
   display: flex;
@@ -543,14 +553,188 @@ textarea.form-input {
 }
 
 @media (max-width: 640px) {
+  /* ── Navbar 手機版 ── */
+  .navbar {
+    padding: 0 16px;
+    height: 52px;
+  }
+
+  .navbar-brand {
+    font-size: 15px;
+  }
+
+  /* 桌面版導航隱藏 */
+  .navbar-nav-desktop {
+    display: none;
+  }
+
+  /* 底部導航顯示 */
+  .navbar-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border-top: 1px solid #e8e8e8;
+    box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.08);
+    justify-content: space-around;
+    align-items: stretch;
+    z-index: 200;
+    height: 62px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .navbar-nav li {
+    flex: 1;
+    display: flex;
+  }
+
+  .navbar-nav a {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    text-decoration: none;
+    color: #aaa;
+    padding: 6px 0;
+    border-radius: 0;
+    transition: color 0.2s;
+  }
+
+  .navbar-nav a.active,
+  .navbar-nav a:hover {
+    color: #1a56db;
+    background: none;
+  }
+
+  .nav-icon {
+    display: block;
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .nav-label {
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  /* 隱藏使用者名稱，只保留登出按鈕 */
+  .navbar-user {
+    display: none;
+  }
+
+  .navbar-logout {
+    padding: 5px 12px;
+    font-size: 13px;
+  }
+
+  /* ── 頁面主體 ── */
+  main {
+    padding-bottom: 72px; /* 為底部導航留空間 */
+  }
+
   .page {
-    padding: 0 14px;
-    margin: 16px auto;
+    padding: 0 16px;
+    margin: 20px auto;
   }
+
+  /* ── 打卡首頁 ── */
+  .date-display {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .time-display {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
   .clock-status {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
   }
+
+  .clock-item {
+    padding: 14px 10px;
+    border-radius: 12px;
+  }
+
+  .clock-item-value {
+    font-size: 20px;
+  }
+
+  /* 按鈕全寬 */
+  .btn-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    min-width: unset;
+  }
+
+  .btn {
+    padding: 12px 18px;
+  }
+
+  /* ── 統計欄 ── */
+  .stats-row {
+    gap: 10px;
+  }
+
+  .stat-box {
+    padding: 14px 10px;
+  }
+
+  .stat-value {
+    font-size: 22px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+  }
+
+  /* ── 卡片 ── */
+  .card {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  /* ── 登入頁 ── */
   .login-card {
-    padding: 32px 24px;
+    padding: 32px 20px;
+    margin: 16px;
+  }
+
+  .login-title {
+    font-size: 20px;
+  }
+
+  /* ── 頁面標題 ── */
+  .page-header h1 {
+    font-size: 20px;
+  }
+
+  /* ── 月份選擇器 ── */
+  .month-picker {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ── Modal ── */
+  .modal {
+    margin: 0 8px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
   }
 }
