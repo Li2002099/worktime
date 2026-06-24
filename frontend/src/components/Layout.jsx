@@ -70,7 +70,6 @@ export default function Layout({ children }) {
           </li>
         )}
       </ul>
-      </nav>
       <main>{children}</main>
     </>
   );
