@@ -36,10 +36,11 @@ async function init() {
       ['andy',   'Andy',   'user'],
       ['jen',    'Jen',    'user'],
       ['bob',    'Bob',    'user'],
-      ['daisey', 'Daisey', 'user'],
+      ['daisy', 'Daisy', 'user'],
       ['willy',  'Willy',  'user'],
       ['hong',   'Hong',   'user'],
       ['jenna',  'Jenna',  'user'],
+      ['wesley' , 'Wesley' ,'user'],
     ];
 
     for (const [username, name, role] of defaultUsers) {
